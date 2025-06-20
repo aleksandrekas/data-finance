@@ -1,6 +1,44 @@
+import { useEffect, useState } from "react";
+
+
+
+
+
 export default function HomePage() {
   const buttonStyle = 'h-[40px] rounded-[5px] text-[0.8rem] cursor-pointer';
-  const green = '#0c7958';
+  const words = ['BTB','BTC','SaaS'];
+  const [word,setWord] = useState('');
+  const [index,setIndex] = useState(0);
+  const [isDeleting,setDeleting] = useState(false)
+
+  useEffect(() => {
+    const currentWord = words[index % words.length];
+
+    let typingSpeed = isDeleting ? 100 : 150;
+
+    const type = () => {
+      if (isDeleting) {
+        setWord((prev) => prev.slice(0, -1));
+      } else {
+        setWord((prev) => currentWord.slice(0, prev.length + 1));
+      }
+
+      if (!isDeleting && word === currentWord) {
+        // Pause before deleting
+        setTimeout(() => setDeleting(true), 1000);
+      } else if (isDeleting && word === '') {
+        setDeleting(false);
+        setIndex((prev) => prev + 1);
+      }
+    };
+
+    const timer = setTimeout(type, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [word, isDeleting, index]);
+
+
+
 
   return (
     <div id="container" className="w-full h-screen bg-black">
@@ -21,9 +59,9 @@ export default function HomePage() {
       <section id="homeSection" className="flex flex-col justify-center items-center mt-40">
         <h5 className="text-[#0c7958] font-bold mb-4">GROWING WITH DATA ANALYTICS</h5>
         <h1 className="text-white text-6xl font-medium mb-4">Grow with data.</h1>
-        <h2 className="text-white font-medium text-5xl mb-4">Fast, flexible financing for ...</h2>
-        <p className="mb-4 w-[800px] text-center text-[#8d918e] font-bold text-2xl">Monitor your data analytics to increase revenue for B2B, BTC, & SaaS platforms</p>
-        <button className="bg-[#0c7958] text-black px-4 py-2 rounded-[5px]">Get Started</button>
+        <h2 className="text-white font-medium text-5xl mb-4">Fast, flexible financing for <span className="text-[#8d918e]">{word}</span><span className="cursor">|</span></h2>
+        <p className="mb-4 w-[800px] text-center text-[#8d918e] font-bold text-2xl">Monitor your data analytics to increase revenue for B2B, BTC, & SaaS platforms.</p>
+        <button className="bg-[#0c7958] w-[200px] text-black px-4 py-2 rounded-[5px]">Get Started</button>
       </section>
     </div>
   );

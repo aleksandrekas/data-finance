@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+
+
+
+.cursor{
+    animation: spanBlink 0.9s infinite;
+}
+
+
+
+@keyframes spanBlink {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+
