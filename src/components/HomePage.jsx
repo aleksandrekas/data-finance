@@ -50,7 +50,7 @@ export default function HomePage() {
             <ListItem text={"Account"} />
             <ListItem text={"Sign in"} />
           </ul>
-          <button className={`${buttonStyle} w-[100px] bg-white hover:bg-[#0c7958] hover:text-white`}>
+          <button className={`${buttonStyle} w-[100px] bg-white hover:bg-[#0c7958] hover:text-white font-medium`}>
             Get Started
           </button>
         </div>
@@ -59,9 +59,9 @@ export default function HomePage() {
       <section id="homeSection" className="flex flex-col justify-center items-center mt-40">
         <h5 className="text-[#0c7958] font-bold mb-4">GROWING WITH DATA ANALYTICS</h5>
         <h1 className="text-white text-6xl font-medium mb-4">Grow with data.</h1>
-        <h2 className="text-white font-medium text-5xl mb-4">Fast, flexible financing for <span className="text-[#8d918e]">{word}</span><span className="cursor">|</span></h2>
+        <h2 className="text-white font-medium text-5xl mb-4">Fast, flexible financing for <span className="text-[#8d918e]">{word}</span><span className="cursor text-[#8d918e]">|</span></h2>
         <p className="mb-4 w-[800px] text-center text-[#8d918e] font-bold text-2xl">Monitor your data analytics to increase revenue for B2B, BTC, & SaaS platforms.</p>
-        <button className="bg-[#0c7958] w-[200px] text-black px-4 py-2 rounded-[5px]">Get Started</button>
+        <button className="bg-[#0c7958] w-[200px] text-black hover:bg-[white] hover:text-[#0c7958] px-4 py-2 rounded-[5px] cursor-pointer font-medium">Get Started</button>
       </section>
     </div>
   );
